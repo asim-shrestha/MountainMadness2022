@@ -5,7 +5,7 @@ import VideoMetadata from "../interface/VideoMetadata";
 
 const VideoFrame = styled.div`
   position: relative;
-  width: 100%
+  width: 100%;
   overflow: hidden;
   &::after {
     padding-top: 56.25%;
@@ -39,19 +39,21 @@ const VideoHud: FunctionComponent<VideoHudProps> = ({ video }) => {
       </VideoFrame>
       <div>
         <h5 className={"m-2"}>Ontario's Best Snowtubing!</h5>
-        <div id="action-buttons" className={"d-flex align-items-end"}>
+        <div id="action-buttons" className={"w-100 d-flex align-items-end justify-content-between"}>
           <small className={"text-secondary fs-5 m-2 ellipsis"}>
             27,377 views · Mar 6, 2018{" "}
           </small>
-          <IconButton iconUrl={"/thumb-up.png"} text={video.likes.toString()} />
-          <IconButton
-            iconUrl={"/thumb-down.png"}
-            text={video.dislikes.toString()}
-          />
-          <IconButton iconUrl={"/share.png"} text={"Share"} />
-          <IconButton iconUrl={"/download.png"} text={"Download"} />
-          <IconButton iconUrl={"/save.png"} text={"Save"} />
-          <IconButton iconUrl={""} text={"···"} />
+          <div className="d-flex">
+            <IconButton iconUrl={"/thumb-up.png"} text={video.likes.toString()} />
+            <IconButton
+              iconUrl={"/thumb-down.png"}
+              text={video.dislikes.toString()}
+            />
+            <IconButton iconUrl={"/share.png"} text={"Share"} />
+            <IconButton iconUrl={"/download.png"} text={"Download"} />
+            <IconButton iconUrl={"/save.png"} text={"Save"} />
+            <IconButton iconUrl={""} text={"···"} />
+          </div>
         </div>
       </div>
     </>
