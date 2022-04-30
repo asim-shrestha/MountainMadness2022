@@ -18,6 +18,12 @@ Built using blood, sweat, and memes, YouTube(tm) is your on stop shop for all tu
 
 Built on [Next.js](https://nextjs.org/) (a React framework) and the YouTube API.
 
+### Notable features
+- Embedded video playback!
+- Real comment fetching!
+- A killer search functionality!
+- A nice side bar (top left button) for all your tubing desires!
+
 ### Deployment
 
 ---
