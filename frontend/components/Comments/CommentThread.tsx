@@ -1,6 +1,6 @@
 import axios from "axios"
 import { FunctionComponent, useState } from "react";
-import VideoMetadata from "../interface/VideoMetadata";
+import VideoMetadata from "../../interface/VideoMetadata";
 import Comment from "./Comment"
 // GET https://youtube.googleapis.com/youtube/v3/commentThreads?part=id%2Csnippet%2Creplies&videoId=7eX9Sa2zz0E&access_token=AIzaSyDZo7zVd48-X23NFN_KpmyxNXIavSWJnJc&key=[YOUR_API_KEY] HTTP/1.1
 

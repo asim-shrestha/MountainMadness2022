@@ -3,7 +3,7 @@ import styled from "styled-components";
 import VideoMetadata from "../interface/VideoMetadata";
 import VideoComponent from "../components/VideoComponent";
 import NavBar from "../components/Nav/NavBar";
-import CommentThread from "../components/CommentThread";
+import CommentThread from "../components/Comments/CommentThread";
 
 const CenteredContainer = styled.div`
   display: grid;
