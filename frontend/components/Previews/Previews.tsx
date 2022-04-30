@@ -69,6 +69,7 @@ const Previews = () => {
   const vidList = require("../../interface/videosList.json");
   let vidIds = [];
   for (const [key, value] of Object.entries(vidList)) {
+    // @ts-ignore
     for (let video of value) {
       vidIds.push(video.id);
     }

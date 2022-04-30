@@ -47,7 +47,6 @@ const RecommendedTags: FunctionComponent<RecommendedTagsProps> = ({handleTagClic
             setTagIndex(idx)
             handleTagClick()
           }}
-          key={tag}
         >
           {tag}
         </HoverCursorDiv>

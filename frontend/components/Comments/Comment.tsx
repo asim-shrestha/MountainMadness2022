@@ -13,8 +13,8 @@ type commentProps = {
     videoListInfo: any
 }
 const Comment: FunctionComponent<commentProps> = ({videoListInfo}) => {
-    if(videoListInfo == null || videoListInfo["videoListInfo"] == null) {return <></>;}
     const [isShowMore, setIsShowMore] = useState<Boolean>(true);
+    if(videoListInfo == null || videoListInfo["videoListInfo"] == null) {return <></>;}
     const isDark = 'dark'
     var isShortened = "block";
     const author = videoListInfo["videoListInfo"]["authorDisplayName"];
