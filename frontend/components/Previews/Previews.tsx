@@ -66,13 +66,17 @@ function miniStats(views, date) {
 const Previews = () => {
   const [allPreviews, setAllPreviews] = useState([]);
 
-  const vidIds = require("../../interface/videosList.json").videos.map(
-    function (video) {
-      return video.id;
+  const vidList = require("../../interface/videosList.json");
+  let vidIds = [];
+  for (const [key, value] of Object.entries(vidList)) {
+    for (let video of value) {
+      vidIds.push(video.id);
     }
-  );
-  const vidIdString = vidIds.slice(0, 13).join("%2C");
+  }
 
+  const vidIdString = vidIds.slice(0, 20).join("%2C");
+
+  console.log(vidIdString);
   useEffect(() => {
     axios
       .get(
@@ -85,18 +89,20 @@ const Previews = () => {
   }, []);
 
   const handleTagClick = () => {
-    if(allPreviews == []) { return; }
+    if (allPreviews == []) {
+      return;
+    }
 
     let shuffled = allPreviews
-        .map(value => ({ value, sort: Math.random() }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({ value }) => value)
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
 
-    setAllPreviews(shuffled)
-  }
+    setAllPreviews(shuffled);
+  };
   return (
     <div>
-      <RecommendedTags handleTagClick={handleTagClick}/>
+      <RecommendedTags handleTagClick={handleTagClick} />
       <div class="list-group">
         {allPreviews.map((data, index) => (
           <PreviewLink href={"?id=" + data.id}>
