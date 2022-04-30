@@ -1,4 +1,6 @@
+import axios from "axios";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 
 const PreviewLink = styled.a`
   color: black;
@@ -41,65 +43,46 @@ function miniStats(views, date) {
   } else {
     stats += views;
   }
-  stats += " • ";
+  stats += " • " + date.slice(0, 10);
 
-  return stats + date;
+  return stats;
 }
 
 const Previews = () => {
-  const datalist = [
-    {
-      url: "https://www.youtube.com/embed/7eX9Sa2zz0E",
-      views: 27377,
-      title: "Ontario's Best SnowtubingOntario's Best Snowtubing",
-      date: "Mar 6, 2018",
-      description:
-        "14 chutes, 3 lifts & a 14 story drop; speeds to 80km/h. Ontario's Best Snowtubing.\n14 chutes, 3 lifts & a 14 story drop; speeds to 80km/h. Ontario's Best Snowtubing.\n14 chutes, 3 lifts & a 14 story drop; speeds to 80km/h. Ontario's Best Snowtubing.\n",
-      likes: 1231,
-      dislikes: 1,
-      user_metadata: {
-        avatar_url:
-          "https://yt3.ggpht.com/ytc/AKedOLSlSZDDH03KiN5f5e9PvDHpoX_vDn5hlFGaxZLXWQ=s176-c-k-c0x00ffffff-no-rj",
-        name: "SnowValleyResort",
-        subscribers: 724,
-      },
-      thumbnail:
-        "https://www.seatoskygondola.com/site/assets/files/9299/tubing.1350x760p48x88.jpg",
-    },
-    {
-      url: "https://www.youtube.com/embed/7eX9Sa2zz0E",
-      views: 27377,
-      title: "Ontario's Best Snowtubing",
-      date: "Mar 6, 2018",
-      description:
-        "14 chutes, 3 lifts & a 14 story drop; speeds to 80km/h. Ontario's Best Snowtubing.\n14 chutes, 3 lifts & a 14 story drop; speeds to 80km/h. Ontario's Best Snowtubing.\n14 chutes, 3 lifts & a 14 story drop; speeds to 80km/h. Ontario's Best Snowtubing.\n",
-      likes: 1231,
-      dislikes: 1,
-      user_metadata: {
-        avatar_url:
-          "https://yt3.ggpht.com/ytc/AKedOLSlSZDDH03KiN5f5e9PvDHpoX_vDn5hlFGaxZLXWQ=s176-c-k-c0x00ffffff-no-rj",
-        name: "SnowValleyResort",
-        subscribers: 724,
-      },
-      thumbnail:
-        "https://www.seatoskygondola.com/site/assets/files/9299/tubing.1350x760p48x88.jpg",
-    },
-  ]; // replace this with request to backend
+  const [allPreviews, setAllPreviews] = useState([]);
+
+  let vidIds = ["Ks-_Mh1QhMc", "7eX9Sa2zz0E", "c0KYU2j0TM4", "eIho2S0ZahI"];
+  const vidIdString = vidIds.join("%2C");
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${vidIdString}&key=AIzaSyDZo7zVd48-X23NFN_KpmyxNXIavSWJnJc`
+      )
+      .then((response) => {
+        const data = response.data["items"];
+        setAllPreviews(data);
+        console.log(setAllPreviews);
+      });
+  }, []);
+
   return (
     <div class="col-12 col-md-4">
       <div class="list-group">
-        {datalist.map((data, index) => (
-          <PreviewLink href={data.link}>
+        {allPreviews.map((data, index) => (
+          <PreviewLink href="#">
             <PreviewImg
-              src={data.thumbnail}
+              src={data.snippet.thumbnails.medium.url}
               alt="video thumbnail"
               class="d-inline align-text-top"
             />
             <Title>
-              <p>{data.title}</p>
+              <p>{data.snippet.title}</p>
             </Title>
-            <p>{data.user_metadata.name}</p>
-            <p>{miniStats(data.views, data.date)}</p>
+            <p>{data.snippet.channelTitle}</p>
+            <p>
+              {miniStats(data.statistics.viewCount, data.snippet.publishedAt)}
+            </p>
           </PreviewLink>
         ))}
       </div>
@@ -108,3 +91,26 @@ const Previews = () => {
 };
 
 export default Previews;
+
+/*
+
+{allPreviews.map(function (data, idx) {
+  return <p>{data.snippet.title}</p>;
+})}
+
+{allPreviews.map((data, index) => (
+  <PreviewLink href="#">
+    <PreviewImg
+      src={data.snippet.thumbnails.default.url}
+      alt="video thumbnail"
+      class="d-inline align-text-top"
+    />
+    <Title>
+      <p>{data.snippet.title}</p>
+    </Title>
+    <p>{data.snippet.channelTitle}</p>
+    <p>
+      {miniStats(data.statistics.viewCount, data.snippet.publishedAt)}
+    </p>
+  </PreviewLink>
+))}*/
