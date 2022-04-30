@@ -11,4 +11,17 @@
 </p>
 
 ---
+
 Built using blood, sweat, and memes, YouTube(tm) is your on stop shop for all tubing videos.
+
+Built on [Next.js](https://nextjs.org/) (a React framework) and the YouTube API.
+
+### Deployment
+
+---
+
+You can run it in 3 very easy steps:
+
+1.  clone the repo
+2.  cd into the repo /frontend
+3.  npm install & npm run dev
