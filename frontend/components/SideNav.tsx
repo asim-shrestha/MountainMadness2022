@@ -43,7 +43,7 @@ const SideNav: FunctionComponent<SideNavProps> = ({isOpen, close}) => {
 				</BackgroundOverlay> : ""
 			}
 			<SideNavContainer style={{left: isOpen ? "0" : "-15rem"}}>
-				<div className="pl-5 pb-4">
+				<div className="pt-2 pl-4 pb-4">
 					<YoutubeLogo/>
 				</div>
 				<TubeButton/>
