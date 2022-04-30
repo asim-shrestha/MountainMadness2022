@@ -43,6 +43,7 @@ const RecommendedTags: FunctionComponent<RecommendedTagsProps> = ({handleTagClic
             borderColor: "#dadada",
           }}
           onClick={() => {
+            if(idx == tagIndex) { return; }
             setTagIndex(idx)
             handleTagClick()
           }}
