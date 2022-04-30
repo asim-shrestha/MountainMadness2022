@@ -8,6 +8,7 @@ const PreviewLink = styled.a`
   color: black;
   width: 100%;
   margin: 0.2em;
+  margin-left: 0;
   &:hover {
     text-decoration: none;
     color: black;
