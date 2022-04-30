@@ -23,7 +23,7 @@ const comment = (videoListInfo) => {
       isShortened = "none";
 
     }
-    console.log(isShortened )
+    // console.log(isShortened )
     
     return (
       <div id="description" className={"d-flex flex-column "}>
