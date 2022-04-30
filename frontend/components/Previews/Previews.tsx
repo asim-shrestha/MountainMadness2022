@@ -8,6 +8,7 @@ const PreviewLink = styled.a`
   color: black;
   width: 100%;
   margin: 0.2em;
+  margin-left: 0;
   &:hover {
     text-decoration: none;
     color: black;
@@ -70,7 +71,7 @@ const Previews = () => {
       return video.id;
     }
   );
-  const vidIdString = vidIds.join("%2C");
+  const vidIdString = vidIds.slice(0, 13).join("%2C");
 
   useEffect(() => {
     axios
@@ -99,7 +100,7 @@ const Previews = () => {
       <RecommendedTags handleTagClick={handleTagClick}/>
       <div class="list-group">
         {allPreviews.map((data, index) => (
-          <PreviewLink href="#">
+          <PreviewLink href={"?id=" + data.id}>
             <ImgContainer>
               <PreviewImg
                 src={data.snippet.thumbnails.medium.url}

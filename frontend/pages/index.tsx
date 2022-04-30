@@ -1,4 +1,4 @@
-import type {NextPage} from "next";
+import type { NextPage } from "next";
 import styled from "styled-components";
 import VideoMetadata from "../interface/VideoMetadata";
 import VideoComponent from "../components/VideoComponent";
@@ -66,13 +66,12 @@ const Home: NextPage = () => {
         <div className="row">
           <div className="col-12 col-md-8">
             <VideoComponent video={demoVideo} />
+            <CommentThread video={demoVideo} />
           </div>
           <div className="col-12 col-md-4">
             <Previews />
           </div>
         </div>
-        <hr />
-        <CommentThread video={demoVideo} />
       </CenteredContainer>
     </>
   );
