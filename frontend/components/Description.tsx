@@ -40,10 +40,12 @@ const Description: FunctionComponent<DescriptionProps> = ({ video }) => {
         </div>
       </div>
 
-      <div className="mr-4 mt-4" style={{ marginLeft: "57px" }}>
-        <h6>
+      <div className="mr-4 mt-3" style={{ marginLeft: "57px" }}>
+        <h6
+          style={{fontSize: "0.9rem"}}
+        >
           {isShowMore
-            ? video.description.substring(0, 100) + "..."
+            ? video.description.substring(0, 100) + (video.description.length > 100 ? "..." : "")
             : video.description}
         </h6>
         <HoverCursorDiv

@@ -37,28 +37,30 @@ const comment = (videoListInfo) => {
           />
           <div className={"d-flex flex-column m-2"}>
             <div className="d-flex">
-              <h6 className={"font-weight-bold"}>{author} </h6>
-              <small style={{paddingLeft:"10px", fontSize:"11px"}}>
+              <h6 className={"font-weight-bold"} style={{fontSize: "0.8rem"}}>{author} </h6>
+              <small style={{paddingLeft:"10px", fontSize:"0.7rem"}}>
                {publishedAt.substring(0,10)}{" "}
               </small>
             </div>
             <div className="mr-2 mt-2" >
-              <h6>
+              <h6
+                style={{fontSize: "0.9rem"}}
+              >
                 {isShowMore
-                  ? text.substring(0, 100) + "..."
+                  ? text.substring(0, 100) + (text.length > 100 ? "..." : "")
                   : text}
               </h6>
               <ShowMoreButton id="buttonShow"
                 className={
-                  (!isShowMore ? "mt-4" : "mt-3") + " text-secondary text-uppercase"
+                  (!isShowMore ? "mt-3" : "mt-2") + " text-secondary font-weight-bold"
                 }
-                style={{ fontSize: "0.75rem", color: "darkgray", display:isShortened }}
+                style={{ fontSize: "0.75rem", color: "darkgray", display:isShortened, marginBottom: "0.4rem", paddingBottom: "0"}}
                 onClick={() => setIsShowMore(!isShowMore)}
               >
-                Show {isShowMore ? "more" : "less"}
+                Read {isShowMore ? "more" : "less"}
               </ShowMoreButton>
-              <div id="action-buttons" className={"d-flex mt-2"}>
-                <IconButton iconUrl={"/thumb-up.png"} text={likeCount.toString()} />
+              <div id="action-buttons" className={"d-flex"}>
+                <IconButton iconUrl={"/thumb-up.png"} normal text={likeCount.toString()} />
                 <small className={"text-secondary fs-5 m-2 ellipsis"}>
                   Reply{" "}
                 </small>
