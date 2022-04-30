@@ -6,6 +6,7 @@ import NavBar from "../components/Nav/NavBar";
 import CommentThread from "../components/Comments/CommentThread";
 import React from "react";
 import RecommendedTags from "../components/RecommendedTags";
+import Previews from "../components/Previews/Previews";
 
 const CenteredContainer = styled.div`
   display: grid;
@@ -34,72 +35,22 @@ const demoVideo: VideoMetadata = {
   },
 };
 
-const PreviewLink = styled.a`
-  color: black;
-  width: 100%;
-  margin: 0.2em;
-  &:hover {
-    text-decoration: none;
-    color: black;
-  }
-`;
-
-const PreviewImg = styled.img`
-  width: 10em !important;
-  margin-right: 1em;
-`;
-
-const Previews = () => {
-  const datalist = [
-    {
-      title: "Tube Tops are all the Rage in 2006",
-      thumbnail:
-        "https://www.seatoskygondola.com/site/assets/files/9299/tubing.1350x760p48x88.jpg",
-      link: "#",
-    },
-    {
-      title: "Water Tubing vs. Snow Tubing",
-      thumbnail:
-        "https://www.seatoskygondola.com/site/assets/files/9299/tubing.1350x760p48x88.jpg",
-      link: "#",
-    },
-  ]; // replace this with request to backend
-
-  return (
-    <div>
-      <RecommendedTags/>
-        <div className="list-group">
-        {datalist.map((data, index) => (
-          <PreviewLink href={data.link}>
-            <PreviewImg
-              src={data.thumbnail}
-              alt="video thumbnail"
-              className="d-inline align-text-top"
-            />
-            {data.title}
-          </PreviewLink>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const Home: NextPage = () => {
   return (
-      <>
-        <NavBar/>
-        <CenteredContainer>
-          <div className="row">
-            <div className="col-12 col-md-8">
-              <VideoComponent video={demoVideo} />
-              <CommentThread video={demoVideo}/>
-            </div>
-            <div className="col-12 col-md-4">
-              <Previews/>
-            </div>
+    <>
+      <NavBar />
+      <CenteredContainer>
+        <div className="row">
+          <div className="col-12 col-md-8">
+            <VideoComponent video={demoVideo} />
+            <CommentThread video={demoVideo} />
           </div>
-        </CenteredContainer>
-      </>
+          <div className="col-12 col-md-4">
+            <Previews />
+          </div>
+        </div>
+      </CenteredContainer>
+    </>
   );
 };
 
