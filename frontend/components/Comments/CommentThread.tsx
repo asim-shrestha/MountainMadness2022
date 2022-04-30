@@ -40,7 +40,7 @@ const CommentThread: FunctionComponent<VideoComponentProps> = ({ video }) => {
   return (
     <div>
       {allComments.map(function (d, idx) {
-        return <Comment videoListInfo={d.snippet.topLevelComment.snippet} />;
+        return <Comment key={idx} videoListInfo={d.snippet.topLevelComment.snippet} />;
       })}
     </div>
   );

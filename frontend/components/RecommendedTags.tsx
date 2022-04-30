@@ -28,7 +28,7 @@ const RecommendedTags: FunctionComponent<RecommendedTagsProps> = ({handleTagClic
       style={{ gap: "0.25rem", overflow: "hidden", marginBottom: "1em" }}
     >
       {tags.map((tag, idx) => (
-        <HoverCursorDiv
+        <HoverCursorDiv key={idx}
           className={
             tagIndex == idx ? "bg-dark text-white border border-dark" : ""
           }
