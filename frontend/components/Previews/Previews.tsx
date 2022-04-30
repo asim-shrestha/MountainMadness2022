@@ -31,7 +31,7 @@ const TextContainer = styled.div`
   margin-left: 10.25em;
   margin-right: 1em;
   & > p {
-    font-size: 0.7em;
+    font-size: 0.8em;
     line-height: 0px;
   }
 `;
