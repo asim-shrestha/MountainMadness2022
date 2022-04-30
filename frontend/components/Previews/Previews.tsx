@@ -71,7 +71,7 @@ const Previews = () => {
       return video.id;
     }
   );
-  const vidIdString = vidIds.join("%2C");
+  const vidIdString = vidIds.slice(0, 13).join("%2C");
 
   useEffect(() => {
     axios
@@ -90,7 +90,7 @@ const Previews = () => {
       <RecommendedTags />
       <div class="list-group">
         {allPreviews.map((data, index) => (
-          <PreviewLink href="#">
+          <PreviewLink href={"?video_id=" + data.id}>
             <ImgContainer>
               <PreviewImg
                 src={data.snippet.thumbnails.medium.url}
