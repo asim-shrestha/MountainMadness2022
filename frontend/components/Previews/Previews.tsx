@@ -81,7 +81,6 @@ const Previews = () => {
       .then((response) => {
         const data = response.data["items"];
         setAllPreviews(data);
-        console.log(setAllPreviews);
       });
   }, []);
 
