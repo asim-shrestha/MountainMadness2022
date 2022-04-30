@@ -42,7 +42,7 @@ const Title = styled.div`
   -webkit-line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  font-size: 0.8em;
+  font-size: 0.85em;
   font-weight: bold;
   margin-bottom: 0.5em;
 `;
