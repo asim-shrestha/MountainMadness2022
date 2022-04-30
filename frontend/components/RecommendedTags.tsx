@@ -15,7 +15,11 @@ const tags = [
   "tOObs",
 ];
 
-const RecommendedTags: FunctionComponent = () => {
+type RecommendedTagsProps = {
+  handleTagClick: () => void;
+};
+
+const RecommendedTags: FunctionComponent<RecommendedTagsProps> = ({handleTagClick}) => {
   const [tagIndex, setTagIndex] = useState(0);
 
   return (
@@ -38,7 +42,10 @@ const RecommendedTags: FunctionComponent = () => {
             borderWidth: "1px",
             borderColor: "#dadada",
           }}
-          onClick={() => setTagIndex(idx)}
+          onClick={() => {
+            setTagIndex(idx)
+            handleTagClick()
+          }}
         >
           {tag}
         </HoverCursorDiv>

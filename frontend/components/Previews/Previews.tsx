@@ -84,9 +84,19 @@ const Previews = () => {
       });
   }, []);
 
+  const handleTagClick = () => {
+    if(allPreviews == []) { return; }
+
+    let shuffled = allPreviews
+        .map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value)
+
+    setAllPreviews(shuffled)
+  }
   return (
     <div>
-      <RecommendedTags />
+      <RecommendedTags handleTagClick={handleTagClick}/>
       <div class="list-group">
         {allPreviews.map((data, index) => (
           <PreviewLink href="#">
