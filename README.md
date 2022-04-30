@@ -4,7 +4,7 @@
 <p align="center">
   <strong>🏆 Future SFU Mountain Madness 2022 Winner 🏆</strong></br>
   <em>Team:  <s>Legacy</s> Ambiguity Edition</em></br>
-  <a href="https://youtube-livid.vercel.app/" target="_blank">Click now to see tubes!</a>
+  <a href="https://youtube-drab.vercel.app/" target="_blank">Click now to see tubes!</a>
 </p>
 <p align="center">
 <img alt="npm" src="https://img.shields.io/npm/v/npm" />
@@ -27,7 +27,7 @@ Built on [Next.js](https://nextjs.org/) (a React framework) and the YouTube API.
 
 ### Deployment
 
-Run this application in 3 very, very easy steps or view it online [here](https://youtube-livid.vercel.app/):
+Run this application in 3 very, very easy steps or view it online [here](https://youtube-drab.vercel.app/):
 
 1.  clone the repo
 2.  cd into the repo /frontend
