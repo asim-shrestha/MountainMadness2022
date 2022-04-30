@@ -44,7 +44,7 @@ const VideoHud: FunctionComponent<VideoHudProps> = ({ video }) => {
             {video.views} views · {video.date}{" "}
           </small>
           <div className="d-flex">
-            <IconButton iconUrl={"/thumb-up.png"} text={video.likes.toString()} />
+            <IconButton iconUrl={"/thumb-up.png"} text={video.likes?.toString()} />
             <IconButton
               iconUrl={"/thumb-down.png"}
               text={video.dislikes.toString()}

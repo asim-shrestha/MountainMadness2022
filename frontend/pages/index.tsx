@@ -31,9 +31,6 @@ const Home: NextPage = () => {
   const [videoData, setVideoData] = useState<VideoMetadata | null>(null);
   const [userData, setUserData] = useState<UserMetadata | null>(null);
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState(
-    selectRandomVideoFromJson()
-  );
   const router = useRouter();
 
   // Retrieve id from router once its ready
@@ -41,13 +38,14 @@ const Home: NextPage = () => {
     if (!router.isReady) return;
 
     const { id } = router.query;
-    if (id == null) {
-      return;
-    }
-    setSelectedVideo({ id: id });
-  }, [router.isReady]);
 
-  useEffect(() => {
+    let selectedVideo = selectRandomVideoFromJson();
+
+    if (id != null) {
+      selectedVideo = {id: id}
+    }
+
+
     let nameBuffer = "";
     axios
       .get(
@@ -55,7 +53,6 @@ const Home: NextPage = () => {
       )
       .then((response) => {
         const res = response.data["items"][0];
-
         const data: VideoMetadata = {
           id: res.id,
           url: "https://www.youtube.com/embed/" + res.id,
@@ -82,7 +79,7 @@ const Home: NextPage = () => {
         };
         setUserData(userData);
       });
-  }, []);
+  }, [router.isReady]);
 
   return (
     <>
