@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 const PreviewLink = styled.a`
   color: black;
-  width: 350%;
+  width: 100%;
   margin: 0.2em;
   &:hover {
     text-decoration: none;
@@ -20,7 +20,6 @@ const PreviewLink = styled.a`
 
 const PreviewImg = styled.img`
   width: 10em !important;
-  margin-right: 1em;
 `;
 
 const Title = styled.div`
@@ -53,7 +52,11 @@ function miniStats(views, date) {
 const Previews = () => {
   const [allPreviews, setAllPreviews] = useState([]);
 
-  let vidIds = ["Ks-_Mh1QhMc", "7eX9Sa2zz0E", "c0KYU2j0TM4", "eIho2S0ZahI"];
+  const vidIds = require("../../interface/videosList.json").videos.map(
+    function (video) {
+      return video.id;
+    }
+  );
   const vidIdString = vidIds.join("%2C");
 
   useEffect(() => {
