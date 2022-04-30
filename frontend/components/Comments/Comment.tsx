@@ -14,14 +14,14 @@ type commentProps = {
 }
 const Comment: FunctionComponent<commentProps> = ({videoListInfo}) => {
     const [isShowMore, setIsShowMore] = useState<Boolean>(true);
-    if(videoListInfo == null || videoListInfo["videoListInfo"] == null) {return <></>;}
+    if(videoListInfo == null ) {return <></>;}
     const isDark = 'dark'
     var isShortened = "block";
-    const author = videoListInfo["videoListInfo"]["authorDisplayName"];
-    const thumbnail = videoListInfo["videoListInfo"]["authorProfileImageUrl"];
-    const text = videoListInfo["videoListInfo"]["textDisplay"];
-    const likeCount = videoListInfo["videoListInfo"]["likeCount"];
-    const publishedAt = videoListInfo["videoListInfo"]["publishedAt"];
+    const author = videoListInfo["authorDisplayName"];
+    const thumbnail = videoListInfo["authorProfileImageUrl"];
+    const text = videoListInfo["textDisplay"];
+    const likeCount = videoListInfo["likeCount"];
+    const publishedAt = videoListInfo["publishedAt"];
 
     if((text.length) < 100){
       isShortened = "none";
