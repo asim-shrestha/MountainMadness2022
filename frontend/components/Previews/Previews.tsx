@@ -1,3 +1,5 @@
+import React from "react";
+import RecommendedTags from "../RecommendedTags";
 import styled from "styled-components";
 
 const PreviewLink = styled.a`
@@ -86,7 +88,8 @@ const Previews = () => {
     },
   ]; // replace this with request to backend
   return (
-    <div class="col-12 col-md-4">
+    <div>
+      <RecommendedTags/>
       <div class="list-group">
         {datalist.map((data, index) => (
           <PreviewLink href={data.link}>
