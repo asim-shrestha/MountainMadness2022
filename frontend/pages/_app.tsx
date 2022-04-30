@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from '../styles/GlobalStyle';
 import theme from '../styles/theme';
 import Head from 'next/head';
+import dynamic from "next/dynamic";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -31,4 +32,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyApp
+export default dynamic(() => Promise.resolve(MyApp), {
+    ssr: false,
+});

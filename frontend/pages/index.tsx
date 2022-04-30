@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import styled from "styled-components";
 import VideoMetadata from "../interface/VideoMetadata";
 import VideoComponent from "../components/VideoComponent";
+import NavBar from "../components/Nav/NavBar";
 
 const CenteredContainer = styled.div`
   display: grid;
@@ -9,7 +10,7 @@ const CenteredContainer = styled.div`
   height: 100vh;
   width: 100vw;
   max-width: 1200px;
-  padding: 1.5em;
+  padding: 3em 1.5em 1.5em 1.5em;
   margin: auto;
 `;
 
@@ -81,16 +82,19 @@ const Previews = () => {
 
 const Home: NextPage = () => {
   return (
-    <CenteredContainer>
-      <div className="row">
-        <div className="col-12 col-md-8">
-          <VideoComponent video={demoVideo} />
-        </div>
-        <div className="col-12 col-md-4">
-          <Previews></Previews>
-        </div>
-      </div>
-    </CenteredContainer>
+      <>
+        <NavBar/>
+        <CenteredContainer>
+          <div className="row">
+            <div className="col-12 col-md-8">
+              <VideoComponent video={demoVideo} />
+            </div>
+            <div className="col-12 col-md-4">
+              <Previews/>
+            </div>
+          </div>
+        </CenteredContainer>
+      </>
   );
 };
 
