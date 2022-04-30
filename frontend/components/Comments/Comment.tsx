@@ -1,4 +1,4 @@
-import { useState } from "react";
+import react, {FunctionComponent, useState } from "react";
 import styled from "styled-components";
 import IconButton from "../IconButton";
 
@@ -9,8 +9,12 @@ const ShowMoreButton = styled.p`
   }
 `
 
-const comment = (videoListInfo) => {
-    const [isShowMore, setIsShowMore] = useState<Boolean>(true  );
+type commentProps = {
+    videoListInfo: any
+}
+const Comment: FunctionComponent<commentProps> = ({videoListInfo}) => {
+    if(videoListInfo == null || videoListInfo["videoListInfo"] == null) {return <></>;}
+    const [isShowMore, setIsShowMore] = useState<Boolean>(true);
     const isDark = 'dark'
     var isShortened = "block";
     const author = videoListInfo["videoListInfo"]["authorDisplayName"];
@@ -73,4 +77,4 @@ const comment = (videoListInfo) => {
     )
   }
   
-  export default comment
+  export default Comment

@@ -47,7 +47,7 @@ const Title = styled.div`
   margin-bottom: 0.5em;
 `;
 
-function miniStats(views, date) {
+function miniStats(views: any, date: any) {
   let stats = "";
   if (views >= 1000000) {
     views = Math.floor(views / 1000000);
@@ -67,7 +67,7 @@ const Previews = () => {
   const [allPreviews, setAllPreviews] = useState([]);
 
   const vidIds = require("../../interface/videosList.json").videos.map(
-    function (video) {
+    function (video: any) {
       return video.id;
     }
   );
@@ -97,14 +97,14 @@ const Previews = () => {
   return (
     <div>
       <RecommendedTags handleTagClick={handleTagClick}/>
-      <div class="list-group">
-        {allPreviews.map((data, index) => (
-          <PreviewLink href={"?id=" + data.id}>
+      <div className="list-group">
+        {allPreviews.map((data: any, index) => (
+          <PreviewLink key={data.id} href={"?id=" + data.id}>
             <ImgContainer>
               <PreviewImg
                 src={data.snippet.thumbnails.medium.url}
                 alt="video thumbnail"
-                class="d-inline align-text-top"
+                className="d-inline align-text-top"
               />
             </ImgContainer>
             <TextContainer>
