@@ -1,5 +1,7 @@
 import type { NextPage } from "next";
 import styled from "styled-components";
+import VideoMetadata from "../interface/VideoMetadata";
+import VideoComponent from "../components/VideoComponent";
 
 const CenteredContainer = styled.div`
   display: grid;
@@ -11,29 +13,21 @@ const CenteredContainer = styled.div`
   margin: auto;
 `;
 
-const VideoFrame = styled.iframe`
-  width: 100%;
-  min-height: 65vh;
-`;
-
-const Video = () => {
-  const data = {
-    title: "Water Tubing vs. Snow Tubing",
-    url: "https://www.youtube.com/embed/mTz0GXj8NN0",
-  }; // replace this with request to backend
-
-  return (
-    <div class="col-12 col-md-8">
-      <VideoFrame
-        src={data.url}
-        title={data.title}
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></VideoFrame>
-      <h5>{data.title}</h5>
-    </div>
-  );
+const demoVideo: VideoMetadata = {
+  url: "https://www.youtube.com/embed/7eX9Sa2zz0E",
+  views: 27377,
+  title: "Test video",
+  date: "Mar 6, 2018",
+  description:
+    "14 chutes, 3 lifts & a 14 story drop; speeds to 80km/h. Ontario's Best Snowtubing.\n14 chutes, 3 lifts & a 14 story drop; speeds to 80km/h. Ontario's Best Snowtubing.\n14 chutes, 3 lifts & a 14 story drop; speeds to 80km/h. Ontario's Best Snowtubing.\n",
+  likes: 1231,
+  dislikes: 1,
+  user_metadata: {
+    avatar_url:
+      "https://yt3.ggpht.com/ytc/AKedOLSlSZDDH03KiN5f5e9PvDHpoX_vDn5hlFGaxZLXWQ=s176-c-k-c0x00ffffff-no-rj",
+    name: "SnowValleyResort",
+    subscribers: 724,
+  },
 };
 
 const PreviewLink = styled.a`
@@ -47,7 +41,7 @@ const PreviewLink = styled.a`
 `;
 
 const PreviewImg = styled.img`
-  height: 5em !important;
+  width: 10em !important;
   margin-right: 1em;
 `;
 
@@ -56,13 +50,13 @@ const Previews = () => {
     {
       title: "Tube Tops are all the Rage in 2006",
       thumbnail:
-        "https://i.ytimg.com/an_webp/mTz0GXj8NN0/mqdefault_6s.webp?du=3000&sqp=CPeQs5MG&rs=AOn4CLCsw8pIAsbZp2TITnzvJJRi0ejCag",
+        "https://www.seatoskygondola.com/site/assets/files/9299/tubing.1350x760p48x88.jpg",
       link: "#",
     },
     {
       title: "Water Tubing vs. Snow Tubing",
       thumbnail:
-        "https://i.ytimg.com/an_webp/mTz0GXj8NN0/mqdefault_6s.webp?du=3000&sqp=CPeQs5MG&rs=AOn4CLCsw8pIAsbZp2TITnzvJJRi0ejCag",
+        "https://www.seatoskygondola.com/site/assets/files/9299/tubing.1350x760p48x88.jpg",
       link: "#",
     },
   ]; // replace this with request to backend
@@ -88,10 +82,13 @@ const Previews = () => {
 const Home: NextPage = () => {
   return (
     <CenteredContainer>
-      <div class="row">
-        <Video></Video>
-        <hr />
-        <Previews></Previews>
+      <div className="row">
+        <div className="col-12 col-md-8">
+          <VideoComponent video={demoVideo} />
+        </div>
+        <div className="col-12 col-md-4">
+          <Previews></Previews>
+        </div>
       </div>
     </CenteredContainer>
   );

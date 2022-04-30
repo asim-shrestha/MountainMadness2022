@@ -4,10 +4,11 @@ const GlobalStyle = createGlobalStyle`
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@400;700&display=swap");
 
 html{
-  background: white;
+  background: #F9F9F9;
 }
 
 body, h1, h2, h3, h4, h5, h6 {
+  background: #F9F9F9;
   margin: 0;
 }
 
@@ -34,6 +35,12 @@ body, input, textarea, button  {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 `;
