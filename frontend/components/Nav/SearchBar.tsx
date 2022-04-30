@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import Link from 'next/link'
+import Link from "next/link";
 
 const SearchBar: FunctionComponent = () => {
   const tubesStr = "Tubes and Tubes only.";
@@ -7,7 +7,7 @@ const SearchBar: FunctionComponent = () => {
 
   return (
     <div className="col-sm-3 my-1">
-      <div className="input-group" style={{ minWidth: "10rem" }}>
+      <div className="input-group" style={{ minWidth: "10rem", width: "150%" }}>
         <input
           type="text"
           className="form-control"
@@ -23,11 +23,11 @@ const SearchBar: FunctionComponent = () => {
           }}
         />
         <div className={"input-group-append"}>
-			<Link href="/">
-			  <a className="input-group-text pl-4 pr-4">
-				<img height="18px" alt="search" src="/search.png"></img>
-			  </a>
-			</Link>
+          <Link href="/">
+            <a className="input-group-text pl-4 pr-4">
+              <img height="18px" alt="search" src="/search.png"></img>
+            </a>
+          </Link>
         </div>
       </div>
     </div>
