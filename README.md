@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./frontend/public/youtube.png" alt="Legacy Edition" height="300" />
+  <img src="./frontend/public/youtube.png" alt="Legacy Edition" height="150" />
 </p>
 <p align="center">
   <strong>🏆 Future SFU Mountain Madness 2022 Winner 🏆</strong></br>
