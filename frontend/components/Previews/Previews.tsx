@@ -12,14 +12,27 @@ const PreviewLink = styled.a`
     text-decoration: none;
     color: black;
   }
-  & > p {
-    font-size: 0.6em;
-    line-height: 0px;
-  }
+  overflow: auto;
 `;
 
 const PreviewImg = styled.img`
   width: 10em !important;
+`;
+
+const ImgContainer = styled.div`
+  float: left;
+  & > img {
+    display: block;
+  }
+`;
+
+const TextContainer = styled.div`
+  margin-left: 10.25em;
+  margin-right: 1em;
+  & > p {
+    font-size: 0.7em;
+    line-height: 0px;
+  }
 `;
 
 const Title = styled.div`
@@ -77,18 +90,22 @@ const Previews = () => {
       <div class="list-group">
         {allPreviews.map((data, index) => (
           <PreviewLink href="#">
-            <PreviewImg
-              src={data.snippet.thumbnails.medium.url}
-              alt="video thumbnail"
-              class="d-inline align-text-top"
-            />
-            <Title>
-              <p>{data.snippet.title}</p>
-            </Title>
-            <p>{data.snippet.channelTitle}</p>
-            <p>
-              {miniStats(data.statistics.viewCount, data.snippet.publishedAt)}
-            </p>
+            <ImgContainer>
+              <PreviewImg
+                src={data.snippet.thumbnails.medium.url}
+                alt="video thumbnail"
+                class="d-inline align-text-top"
+              />
+            </ImgContainer>
+            <TextContainer>
+              <Title>
+                <p>{data.snippet.title}</p>
+              </Title>
+              <p>{data.snippet.channelTitle}</p>
+              <p>
+                {miniStats(data.statistics.viewCount, data.snippet.publishedAt)}
+              </p>
+            </TextContainer>
           </PreviewLink>
         ))}
       </div>

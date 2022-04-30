@@ -41,18 +41,19 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <NavBar openSideNav={() => setIsSideNavOpen(true)}/>
-      <SideNav isOpen={isSideNavOpen} close={() => setIsSideNavOpen(false)}/>
+      <NavBar openSideNav={() => setIsSideNavOpen(true)} />
+      <SideNav isOpen={isSideNavOpen} close={() => setIsSideNavOpen(false)} />
       <CenteredContainer>
         <div className="row">
           <div className="col-12 col-md-8">
             <VideoComponent video={demoVideo} />
-            <CommentThread video={demoVideo} />
           </div>
           <div className="col-12 col-md-4">
             <Previews />
           </div>
         </div>
+        <hr />
+        <CommentThread video={demoVideo} />
       </CenteredContainer>
     </>
   );

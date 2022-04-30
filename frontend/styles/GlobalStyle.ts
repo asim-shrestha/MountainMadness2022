@@ -37,6 +37,15 @@ body, input, textarea, button  {
   background: #555;
 }
 
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;
+  background-color: #dedede;
+  height: 1px;
+}
+
 .ellipsis {
   white-space: nowrap;
   overflow: hidden;
