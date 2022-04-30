@@ -22,9 +22,12 @@ const SearchBar: FunctionComponent = () => {
           }}
         />
         <div className={"input-group-append"}>
-            <a href="" className="input-group-text pl-4 pr-4">
-              <img height="18px" alt="search" src="/search.png"></img>
-            </a>
+          <a
+            href="https://youtube-livid.vercel.app/"
+            className="input-group-text pl-4 pr-4"
+          >
+            <img height="18px" alt="search" src="/search.png"></img>
+          </a>
         </div>
       </div>
     </div>
