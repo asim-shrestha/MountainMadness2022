@@ -19,7 +19,9 @@ body, input, textarea, button  {
 /* width */
 ::-webkit-scrollbar {
   border-top-right-radius: 10px;
-  width: 10px;
+  width: 5px;
+  height: 5px;
+  opacity: 0.5px;
 }
 
 /* Track */
@@ -29,12 +31,13 @@ body, input, textarea, button  {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #aaa;
+  border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #999;
 }
 
 hr {

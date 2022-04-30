@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
+import styled from "styled-components";
 import VideoMetadata from "../interface/VideoMetadata";
 import Description from "./Description";
 import HoverCursorDiv from "./HoverCursorDiv";
@@ -19,14 +20,24 @@ type RecommendedTagsProps = {
   handleTagClick: () => void;
 };
 
-const RecommendedTags: FunctionComponent<RecommendedTagsProps> = ({handleTagClick}) => {
+const TagContainer = styled.div`
+  gap: 0.25rem;
+  overflow: hidden;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.2em;
+  &:hover {
+    overflow-x: scroll;
+    margin-bottom: 0.2em;
+  }
+`;
+
+const RecommendedTags: FunctionComponent<RecommendedTagsProps> = ({
+  handleTagClick,
+}) => {
   const [tagIndex, setTagIndex] = useState(0);
 
   return (
-    <div
-      className="d-flex"
-      style={{ gap: "0.25rem", overflow: "hidden", marginBottom: "1em" }}
-    >
+    <TagContainer className="d-flex">
       {tags.map((tag, idx) => (
         <HoverCursorDiv
           className={
@@ -43,15 +54,17 @@ const RecommendedTags: FunctionComponent<RecommendedTagsProps> = ({handleTagClic
             borderColor: "#dadada",
           }}
           onClick={() => {
-            if(idx == tagIndex) { return; }
-            setTagIndex(idx)
-            handleTagClick()
+            if (idx == tagIndex) {
+              return;
+            }
+            setTagIndex(idx);
+            handleTagClick();
           }}
         >
           {tag}
         </HoverCursorDiv>
       ))}
-    </div>
+    </TagContainer>
   );
 };
 
