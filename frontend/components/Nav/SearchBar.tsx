@@ -1,5 +1,4 @@
 import { FunctionComponent, useState } from "react";
-import Link from "next/link";
 
 const SearchBar: FunctionComponent = () => {
   const tubesStr = "Tubes and Tubes only.";
@@ -23,11 +22,9 @@ const SearchBar: FunctionComponent = () => {
           }}
         />
         <div className={"input-group-append"}>
-          <Link href="/">
-            <a className="input-group-text pl-4 pr-4">
+            <a href="" className="input-group-text pl-4 pr-4">
               <img height="18px" alt="search" src="/search.png"></img>
             </a>
-          </Link>
         </div>
       </div>
     </div>
