@@ -13,7 +13,7 @@ const ShowMoreButton = styled.p`
 `;
 
 const Description: FunctionComponent<DescriptionProps> = ({ video }) => {
-  const [isShowMore, setIsShowMore] = useState<Boolean>(false);
+  const [isShowMore, setIsShowMore] = useState<Boolean>(true);
   const userMetadata = video.user_metadata;
 
   return (
