@@ -1,6 +1,8 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@400;700&display=swap");
+
 html{
   background: white;
 }
@@ -10,7 +12,7 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 body, input, textarea, button  {
-  font-family:Roboto,monospace;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* width */
@@ -33,6 +35,7 @@ body, input, textarea, button  {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
 `;
 
 export default GlobalStyle;
