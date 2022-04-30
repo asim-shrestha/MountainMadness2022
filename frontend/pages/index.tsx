@@ -9,6 +9,7 @@ import React, { useState, useEffect } from "react";
 import RecommendedTags from "../components/RecommendedTags";
 import Previews from "../components/Previews/Previews";
 import SideNav from "../components/SideNav";
+import { useRouter } from "next/router";
 
 const CenteredContainer = styled.div`
   display: grid;
@@ -19,6 +20,11 @@ const CenteredContainer = styled.div`
   padding: 4em 1.5em 1.5em 1.5em;
   margin: auto;
 `;
+
+const selectRandomVideoFromJson = () => {
+  const videos = require("../interface/videosList.json").videos;
+  return videos[Math.floor(Math.random() * videos.length)];
+};
 
 const Home: NextPage = () => {
   const [videoData, setVideoData] = useState({
@@ -39,13 +45,26 @@ const Home: NextPage = () => {
     },
   });
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-  const params = new URLSearchParams(window.location.search);
-  const vidId = params.get("id");
+  const [selectedVideo, setSelectedVideo] = useState(
+    selectRandomVideoFromJson()
+  );
+  const router = useRouter();
+
+  // Retrieve id from router once its ready
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    const { id } = router.query;
+    if (id == null) {
+      return;
+    }
+    setSelectedVideo({ id: id });
+  }, [router.isReady]);
 
   useEffect(() => {
     axios
       .get(
-        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${vidId}&key=AIzaSyDZo7zVd48-X23NFN_KpmyxNXIavSWJnJc`
+        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${selectedVideo.id}&key=AIzaSyDZo7zVd48-X23NFN_KpmyxNXIavSWJnJc`
       )
       .then((response) => {
         const res = response.data["items"][0];
@@ -76,7 +95,6 @@ const Home: NextPage = () => {
         const data: VideoMetadata = videoData;
         data.user_metadata.avatar_url = res.snippet.thumbnails.default.url;
         data.user_metadata.subscribers = res.statistics.subscriberCount;
-        console.log(data);
         setVideoData(data);
       });
   }, []);

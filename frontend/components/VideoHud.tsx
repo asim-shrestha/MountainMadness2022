@@ -37,7 +37,7 @@ const VideoHud: FunctionComponent<VideoHudProps> = ({ video }) => {
           allowfullscreen
         />
       </VideoFrame>
-      <div>
+      <div className={"mt-3"}>
         <h5 className={"m-2"}>{video.title}</h5>
         <div id="action-buttons" className={"w-100 d-flex align-items-end justify-content-between"}>
           <small className={"text-secondary fs-5 m-2 ellipsis"}>
