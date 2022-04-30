@@ -1,16 +1,12 @@
-import { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import VideoMetadata from "../interface/VideoMetadata";
 import styled from "styled-components";
+import HoverCursorDiv from "./HoverCursorDiv";
 
 type DescriptionProps = {
   video: VideoMetadata;
 };
 
-const ShowMoreButton = styled.p`
-  :hover {
-    cursor: pointer;
-  }
-`;
 
 const Description: FunctionComponent<DescriptionProps> = ({ video }) => {
   const [isShowMore, setIsShowMore] = useState<Boolean>(true);
@@ -50,15 +46,15 @@ const Description: FunctionComponent<DescriptionProps> = ({ video }) => {
             ? video.description.substring(0, 100) + "..."
             : video.description}
         </h6>
-        <ShowMoreButton
+        <HoverCursorDiv
           className={
             (!isShowMore ? "mt-4" : "mt-3") + " text-secondary text-uppercase"
           }
-          style={{ fontSize: "0.75rem", color: "darkgray" }}
+          style={{ fontSize: "0.75rem", color: "darkgray", width: "fit-content" }}
           onClick={() => setIsShowMore(!isShowMore)}
         >
           Show {isShowMore ? "more" : "less"}
-        </ShowMoreButton>
+        </HoverCursorDiv>
       </div>
     </div>
   );

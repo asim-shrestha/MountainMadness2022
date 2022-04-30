@@ -4,6 +4,8 @@ import VideoMetadata from "../interface/VideoMetadata";
 import VideoComponent from "../components/VideoComponent";
 import NavBar from "../components/Nav/NavBar";
 import CommentThread from "../components/Comments/CommentThread";
+import React from "react";
+import RecommendedTags from "../components/RecommendedTags";
 
 const CenteredContainer = styled.div`
   display: grid;
@@ -11,7 +13,7 @@ const CenteredContainer = styled.div`
   height: 100vh;
   width: 100vw;
   max-width: 1200px;
-  padding: 3em 1.5em 1.5em 1.5em;
+  padding: 4em 1.5em 1.5em 1.5em;
   margin: auto;
 `;
 
@@ -64,14 +66,15 @@ const Previews = () => {
   ]; // replace this with request to backend
 
   return (
-    <div class="col-12 col-md-4">
-      <div class="list-group">
+    <div>
+      <RecommendedTags/>
+        <div className="list-group">
         {datalist.map((data, index) => (
           <PreviewLink href={data.link}>
             <PreviewImg
               src={data.thumbnail}
               alt="video thumbnail"
-              class="d-inline align-text-top"
+              className="d-inline align-text-top"
             />
             {data.title}
           </PreviewLink>
