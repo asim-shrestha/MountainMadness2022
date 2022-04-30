@@ -90,7 +90,7 @@ const Previews = () => {
       <RecommendedTags />
       <div class="list-group">
         {allPreviews.map((data, index) => (
-          <PreviewLink href={"?video_id=" + data.id}>
+          <PreviewLink href={"?id=" + data.id}>
             <ImgContainer>
               <PreviewImg
                 src={data.snippet.thumbnails.medium.url}
