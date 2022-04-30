@@ -2,15 +2,17 @@ import React, { FunctionComponent, useState } from "react";
 import VideoMetadata from "../interface/VideoMetadata";
 import styled from "styled-components";
 import HoverCursorDiv from "./HoverCursorDiv";
+import UserMetadata from "../interface/UserMetadata";
 
 type DescriptionProps = {
   video: VideoMetadata;
+  user: UserMetadata;
 };
 
 
-const Description: FunctionComponent<DescriptionProps> = ({ video }) => {
+const Description: FunctionComponent<DescriptionProps> = ({ video, user }) => {
   const [isShowMore, setIsShowMore] = useState<Boolean>(true);
-  const userMetadata = video.user_metadata;
+  const userMetadata = user;
 
   return (
     <div id="description" className={"d-flex flex-column "}>

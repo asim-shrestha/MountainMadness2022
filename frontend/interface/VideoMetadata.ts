@@ -9,7 +9,6 @@ interface VideoMetadata {
   likes: number;
   dislikes: number;
   date: string;
-  user_metadata: UserMetadata;
 }
 
 export default VideoMetadata;

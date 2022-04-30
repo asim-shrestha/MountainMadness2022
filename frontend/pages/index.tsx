@@ -10,6 +10,7 @@ import RecommendedTags from "../components/RecommendedTags";
 import Previews from "../components/Previews/Previews";
 import SideNav from "../components/SideNav";
 import { useRouter } from "next/router";
+import UserMetadata from "../interface/UserMetadata";
 
 const CenteredContainer = styled.div`
   display: grid;
@@ -27,23 +28,8 @@ const selectRandomVideoFromJson = () => {
 };
 
 const Home: NextPage = () => {
-  const [videoData, setVideoData] = useState({
-    id: "7eX9Sa2zz0E",
-    url: "https://www.youtube.com/embed/7eX9Sa2zz0E",
-    views: 27377,
-    title: "Test video",
-    date: "Mar 6, 2018",
-    description:
-      "14 chutes, 3 lifts & a 14 story drop; speeds to 80km/h. Ontario's Best Snowtubing.",
-    likes: 1231,
-    dislikes: 1,
-    user_metadata: {
-      avatar_url:
-        "https://yt3.ggpht.com/ytc/AKedOLSlSZDDH03KiN5f5e9PvDHpoX_vDn5hlFGaxZLXWQ=s176-c-k-c0x00ffffff-no-rj",
-      name: "SnowValleyResort",
-      subscribers: 724,
-    },
-  });
+  const [videoData, setVideoData] = useState<VideoMetadata | null>(null);
+  const [userData, setUserData] = useState<UserMetadata | null>(null);
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(
     selectRandomVideoFromJson()
@@ -62,6 +48,7 @@ const Home: NextPage = () => {
   }, [router.isReady]);
 
   useEffect(() => {
+    let nameBuffer = "";
     axios
       .get(
         `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${selectedVideo.id}&key=AIzaSyDZo7zVd48-X23NFN_KpmyxNXIavSWJnJc`
@@ -78,13 +65,9 @@ const Home: NextPage = () => {
           description: res.snippet.description,
           likes: res.statistics.likeCount,
           dislikes: 1,
-          user_metadata: {
-            avatar_url:
-              "https://yt3.ggpht.com/ytc/AKedOLSlSZDDH03KiN5f5e9PvDHpoX_vDn5hlFGaxZLXWQ=s176-c-k-c0x00ffffff-no-rj",
-            name: res.snippet.channelTitle,
-            subscribers: 724,
-          },
         };
+
+        nameBuffer = res.snippet.channelTitle;
         setVideoData(data);
         return axios.get(
           `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${res.snippet.channelId}&key=AIzaSyDZo7zVd48-X23NFN_KpmyxNXIavSWJnJc`
@@ -92,10 +75,12 @@ const Home: NextPage = () => {
       })
       .then((response) => {
         const res = response.data["items"][0];
-        const data: VideoMetadata = videoData;
-        data.user_metadata.avatar_url = res.snippet.thumbnails.default.url;
-        data.user_metadata.subscribers = res.statistics.subscriberCount;
-        setVideoData(data);
+        const userData: UserMetadata = {
+          name: nameBuffer,
+          avatar_url: res.snippet.thumbnails.default.url,
+          subscribers: res.statistics.subscriberCount,
+        };
+        setUserData(userData);
       });
   }, []);
 
@@ -106,8 +91,15 @@ const Home: NextPage = () => {
       <CenteredContainer>
         <div className="row">
           <div className="col-12 col-md-8">
-            <VideoComponent video={videoData} />
-            <CommentThread video={videoData} />
+            {
+              (videoData != null && userData != null) ?
+              <>
+                <VideoComponent video={videoData} user={userData} />
+                <CommentThread video={videoData} />
+              </>
+                  : ""
+            }
+
           </div>
           <div className="col-12 col-md-4">
             <Previews />
