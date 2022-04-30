@@ -19,15 +19,15 @@ type NavBarProps = {
 
 const NavBar: FunctionComponent<NavBarProps> = ({openSideNav}) => {
 	return (
-		<HoverCursorDiv>
+		<div>
 			<NavBarContainer className={"d-flex justify-content-between align-items-center bg-white pl-4 pr-4"}>
-				<div onClick={openSideNav}>
+				<HoverCursorDiv onClick={openSideNav}>
 					<YoutubeLogo />
-				</div>
+				</HoverCursorDiv>
 				<SearchBar/>
 				<NavIcons/>
 			</NavBarContainer>
-		</HoverCursorDiv>
+		</div>
 	)
 }
 
