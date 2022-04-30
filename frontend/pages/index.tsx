@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import styled from "styled-components";
 import VideoMetadata from "../interface/VideoMetadata";
 import VideoComponent from "../components/VideoComponent";
+import CommentThread from "../components/CommentThread";
 
 const CenteredContainer = styled.div`
   display: grid;
@@ -85,6 +86,7 @@ const Home: NextPage = () => {
       <div className="row">
         <div className="col-12 col-md-8">
           <VideoComponent video={demoVideo} />
+		  <CommentThread video={demoVideo}/>
         </div>
         <div className="col-12 col-md-4">
           <Previews></Previews>
