@@ -1,14 +1,13 @@
-import type { NextPage } from "next";
+import type {NextPage} from "next";
 import styled from "styled-components";
 import VideoMetadata from "../interface/VideoMetadata";
 import VideoComponent from "../components/VideoComponent";
 import NavBar from "../components/Nav/NavBar";
 import CommentThread from "../components/Comments/CommentThread";
-import React, { useState } from "react";
-import RecommendedTags from "../components/RecommendedTags";
+import React, {useState} from "react";
 import Previews from "../components/Previews/Previews";
 import SideNav from "../components/SideNav";
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 
 const CenteredContainer = styled.div`
   display: grid;
@@ -37,12 +36,19 @@ const demoVideo: VideoMetadata = {
   },
 };
 
+const selectRandomVideoFromJson = () => {
+  const videos = require('../interface/videosList.json').videos;
+  return videos[Math.floor(Math.random() * videos.length)];
+}
+
 const Home: NextPage = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
   const router = useRouter();
   const { id } = router.query;
 
-  console.log(id);
+  console.log("id query param ", id);
+  const selectedVideo = (id == null) ? selectRandomVideoFromJson() : {id: id}
+  console.log("Selected video ", selectedVideo);
 
   return (
     <>
