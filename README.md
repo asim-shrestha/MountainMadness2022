@@ -32,3 +32,6 @@ Run this application in 3 very, very easy steps or view it online [here](https:/
 1.  clone the repo
 2.  cd into the repo /frontend
 3.  npm install & npm run build & npm start
+
+### Screenshot
+<img alt="app" src="https://raw.githubusercontent.com/asim-shrestha/MountainMadness2022/main/frontend/public/screenshot.PNG" />
