@@ -28,7 +28,7 @@ const ImgContainer = styled.div`
 `;
 
 const TextContainer = styled.div`
-  margin-left: 10.25em;
+  margin-left: 10.5em;
   margin-right: 1em;
   & > p {
     font-size: 0.8em;
