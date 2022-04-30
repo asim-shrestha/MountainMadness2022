@@ -4,7 +4,7 @@ import VideoMetadata from "../interface/VideoMetadata";
 import VideoComponent from "../components/VideoComponent";
 import NavBar from "../components/Nav/NavBar";
 import CommentThread from "../components/Comments/CommentThread";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Previews from "../components/Previews/Previews";
 import SideNav from "../components/SideNav";
 import {useRouter} from 'next/router'
@@ -43,12 +43,20 @@ const selectRandomVideoFromJson = () => {
 
 const Home: NextPage = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(selectRandomVideoFromJson())
   const router = useRouter();
-  const { id } = router.query;
 
-  console.log("id query param ", id);
-  const selectedVideo = (id == null) ? selectRandomVideoFromJson() : {id: id}
-  console.log("Selected video ", selectedVideo);
+  // Retrieve id from router once its ready
+  useEffect(()=>{
+    if(!router.isReady) return;
+
+    const { id } = router.query;
+    if(id == null) { return; }
+    setSelectedVideo({id: id})
+
+  }, [router.isReady]);
+
+  console.log("Selected video ", selectedVideo)
 
   return (
     <>
