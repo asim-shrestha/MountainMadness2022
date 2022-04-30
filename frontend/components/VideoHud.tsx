@@ -38,10 +38,10 @@ const VideoHud: FunctionComponent<VideoHudProps> = ({ video }) => {
         />
       </VideoFrame>
       <div>
-        <h5 className={"m-2"}>Ontario's Best Snowtubing!</h5>
+        <h5 className={"m-2"}>{video.title}</h5>
         <div id="action-buttons" className={"w-100 d-flex align-items-end justify-content-between"}>
           <small className={"text-secondary fs-5 m-2 ellipsis"}>
-            27,377 views · Mar 6, 2018{" "}
+            {video.views} views · {video.date}{" "}
           </small>
           <div className="d-flex">
             <IconButton iconUrl={"/thumb-up.png"} text={video.likes.toString()} />

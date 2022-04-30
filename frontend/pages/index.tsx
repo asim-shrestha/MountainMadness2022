@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import RecommendedTags from "../components/RecommendedTags";
 import Previews from "../components/Previews/Previews";
 import SideNav from "../components/SideNav";
+import { useRouter } from 'next/router'
 
 const CenteredContainer = styled.div`
   display: grid;
@@ -38,6 +39,10 @@ const demoVideo: VideoMetadata = {
 
 const Home: NextPage = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+  const router = useRouter();
+  const { id } = router.query;
+
+  console.log(id);
 
   return (
     <>
