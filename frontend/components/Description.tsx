@@ -36,6 +36,7 @@ const Description: FunctionComponent<DescriptionProps> = ({ video, user }) => {
             type="button"
             className="btn text-uppercase"
             style={{ color: "white", backgroundColor: "#CC0000" }}
+            onClick={() => window.open("https://www.youtube.com/channel/" + video.channelId)}
           >
             Subscribe
           </button>

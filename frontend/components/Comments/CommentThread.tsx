@@ -10,7 +10,7 @@ type VideoComponentProps = {
 const CommentThread: FunctionComponent<VideoComponentProps> = ({ video }) => {
   // const [theme, setTheme] = useTheme()
   const [allComments, setAllComments] = useState([]);
-  console.log("comm", video);
+  // console.log("comm", video);
 
   var data2 = require("./commentThread.json");
   var vidId = video.id;
@@ -39,8 +39,8 @@ const CommentThread: FunctionComponent<VideoComponentProps> = ({ video }) => {
   // console.log("kkkeke")
   return (
     <div>
-      {allComments.map(function (d, idx) {
-        return <Comment videoListInfo={d.snippet.topLevelComment.snippet} />;
+      {allComments.map(function (d: any, idx) {
+        return <Comment key={d + idx} videoListInfo={d.snippet.topLevelComment.snippet} />;
       })}
     </div>
   );

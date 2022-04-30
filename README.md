@@ -11,6 +11,7 @@
 </p>
 
 ---
+Our project is a parody of YouTube as a play on the theme of ambiguity. For tubes and tubes only. The website shows a randomly selected tubing video from curated videos of different “tubes” including snow tubing, water tubing, tube tops, nanotubes, and more! 
 
 Built using blood, sweat, and memes, YouTube(tm) is your on stop shop for all tubing videos.
 

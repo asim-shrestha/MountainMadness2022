@@ -62,6 +62,7 @@ const Home: NextPage = () => {
           description: res.snippet.description,
           likes: res.statistics.likeCount,
           dislikes: 1,
+          channelId: res.snippet.channelId,
         };
 
         nameBuffer = res.snippet.channelTitle;

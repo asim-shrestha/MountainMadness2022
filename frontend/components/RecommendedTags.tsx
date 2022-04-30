@@ -39,7 +39,7 @@ const RecommendedTags: FunctionComponent<RecommendedTagsProps> = ({
   return (
     <TagContainer className="d-flex">
       {tags.map((tag, idx) => (
-        <HoverCursorDiv
+        <HoverCursorDiv key={idx}
           className={
             tagIndex == idx ? "bg-dark text-white border border-dark" : ""
           }

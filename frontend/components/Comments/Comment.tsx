@@ -1,4 +1,4 @@
-import { useState } from "react";
+import react, {FunctionComponent, useState } from "react";
 import styled from "styled-components";
 import IconButton from "../IconButton";
 
@@ -9,21 +9,25 @@ const ShowMoreButton = styled.p`
   }
 `
 
-const comment = (videoListInfo) => {
-    const [isShowMore, setIsShowMore] = useState<Boolean>(true  );
+type commentProps = {
+    videoListInfo: any
+}
+const Comment: FunctionComponent<commentProps> = ({videoListInfo}) => {
+    const [isShowMore, setIsShowMore] = useState<Boolean>(true);
+    if(videoListInfo == null ) {return <></>;}
     const isDark = 'dark'
     var isShortened = "block";
-    const author = videoListInfo["videoListInfo"]["authorDisplayName"];
-    const thumbnail = videoListInfo["videoListInfo"]["authorProfileImageUrl"];
-    const text = videoListInfo["videoListInfo"]["textDisplay"];
-    const likeCount = videoListInfo["videoListInfo"]["likeCount"];
-    const publishedAt = videoListInfo["videoListInfo"]["publishedAt"];
+    const author = videoListInfo["authorDisplayName"];
+    const thumbnail = videoListInfo["authorProfileImageUrl"];
+    const text = videoListInfo["textDisplay"];
+    const likeCount = videoListInfo["likeCount"];
+    const publishedAt = videoListInfo["publishedAt"];
 
     if((text.length) < 100){
       isShortened = "none";
 
     }
-    console.log(isShortened )
+    // console.log(isShortened )
     
     return (
       <div id="description" className={"d-flex flex-column "}>
@@ -73,4 +77,4 @@ const comment = (videoListInfo) => {
     )
   }
   
-  export default comment
+  export default Comment

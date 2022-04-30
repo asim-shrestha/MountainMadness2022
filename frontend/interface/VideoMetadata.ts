@@ -9,6 +9,7 @@ interface VideoMetadata {
   likes: number;
   dislikes: number;
   date: string;
+  channelId: string;
 }
 
 export default VideoMetadata;
