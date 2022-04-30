@@ -4,14 +4,15 @@
 <p align="center">
   <strong>🏆 Future SFU Mountain Madness 2022 Winner 🏆</strong></br>
   <em>Team:  <s>Legacy</s> Ambiguitiy Edition</em></br>
-  <a href="https://leaf.flortz.vercel.app/" target="_blaank">Click now to see tubes!</a>
+  <a href="https://youtube-livid.vercel.app/" target="_blank">Click now to see tubes!</a>
 </p>
 <p align="center">
 <img alt="npm" src="https://img.shields.io/npm/v/npm" />
 </p>
 
 ---
-Our project is a parody of YouTube as a play on the theme of ambiguity. For tubes and tubes only. The website shows a randomly selected tubing video from curated videos of different “tubes” including snow tubing, water tubing, tube tops, nanotubes, and more! 
+
+Our project is a parody of YouTube as a play on the theme of ambiguity. For tubes and tubes only. The website shows a randomly selected tubing video from curated videos of different “tubes” including snow tubing, water tubing, tube tops, nanotubes, and more!
 
 Built using blood, sweat, and memes, YouTube(tm) is your on stop shop for all tubing videos.
 
