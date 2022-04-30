@@ -10,7 +10,7 @@ type VideoComponentProps = {
 const CommentThread: FunctionComponent<VideoComponentProps> = ({ video }) => {
   // const [theme, setTheme] = useTheme()
   const [allComments, setAllComments] = useState([]);
-  console.log("comm", video);
+  // console.log("comm", video);
 
   var data2 = require("./commentThread.json");
   var vidId = video.id;
