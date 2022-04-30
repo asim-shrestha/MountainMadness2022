@@ -17,7 +17,7 @@ const CenteredContainer = styled.div`
   place-items: center;
   height: 100vh;
   width: 100vw;
-  max-width: 1200px;
+  max-width: 1450px;
   padding: 4em 1.5em 1.5em 1.5em;
   margin: auto;
 `;
@@ -91,15 +91,14 @@ const Home: NextPage = () => {
       <CenteredContainer>
         <div className="row">
           <div className="col-12 col-md-8">
-            {
-              (videoData != null && userData != null) ?
+            {videoData != null && userData != null ? (
               <>
                 <VideoComponent video={videoData} user={userData} />
                 <CommentThread video={videoData} />
               </>
-                  : ""
-            }
-
+            ) : (
+              ""
+            )}
           </div>
           <div className="col-12 col-md-4">
             <Previews />
