@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import IconButton from "../IconButton";
 
 
 const ShowMoreButton = styled.p`
@@ -11,14 +12,16 @@ const ShowMoreButton = styled.p`
 const comment = (videoListInfo) => {
     const [isShowMore, setIsShowMore] = useState<Boolean>(true  );
     const isDark = 'dark'
-    var isShortened = "visible";
+    var isShortened = "block";
     const author = videoListInfo["videoListInfo"]["authorDisplayName"];
     const thumbnail = videoListInfo["videoListInfo"]["authorProfileImageUrl"];
     const text = videoListInfo["videoListInfo"]["textDisplay"];
     const likeCount = videoListInfo["videoListInfo"]["likeCount"];
+    const publishedAt = videoListInfo["videoListInfo"]["publishedAt"];
 
     if((text.length) < 100){
-      isShortened = "hidden";
+      isShortened = "none";
+
     }
     
     return (
@@ -59,30 +62,41 @@ const comment = (videoListInfo) => {
             height={"50px"}
           />
           <div className={"d-flex flex-column m-2"}>
-            <h6 className={"font-weight-bold"}>{author}</h6>
-            {/* <h6 className={"text-secondary"} style={{ fontSize: "0.80rem" }}>
-              {userMetadata.subscribers} subscribers
-            </h6> */}
+            <div className="d-flex">
+              <h6 className={"font-weight-bold"}>{author} </h6>
+              <small style={{paddingLeft:"10px", fontSize:"11px"}}>
+               {publishedAt.substring(0,10)}{" "}
+              </small>
+              {/* <h6 className={"text-secondary"} style={{ fontSize: "0.80rem" }}>
+                {userMetadata.subscribers} subscribers
+              </h6> */}
+            </div>
+            <div className="mr-2 mt-2" >
+              <h6>
+                {isShowMore
+                  ? text.substring(0, 100) + "..."
+                  : text}
+              </h6>
+              <ShowMoreButton id="buttonShow"
+                className={
+                  (!isShowMore ? "mt-4" : "mt-3") + " text-secondary text-uppercase"
+                }
+                style={{ fontSize: "0.75rem", color: "darkgray", display:isShortened }}
+                onClick={() => setIsShowMore(!isShowMore)}
+              >
+                Show {isShowMore ? "more" : "less"}
+              </ShowMoreButton>
+              <div id="action-buttons" className={"d-flex mt-2"}>
+                <IconButton iconUrl={"/thumb-up.png"} text={likeCount.toString()} />
+                <small className={"text-secondary fs-5 m-2 ellipsis"}>
+                  Reply{" "}
+                </small>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="mr-4 mt-4" style={{ marginLeft: "57px" }}>
-        <h6>
-          {isShowMore
-            ? text.substring(0, 100) + "..."
-            : text}
-        </h6>
-        <ShowMoreButton
-          className={
-            (!isShowMore ? "mt-4" : "mt-3") + " text-secondary text-uppercase"
-          }
-          style={{ fontSize: "0.75rem", color: "darkgray", visibility:isShortened }}
-          onClick={() => setIsShowMore(!isShowMore)}
-        >
-          Show {isShowMore ? "more" : "less"}
-        </ShowMoreButton>
-      </div>
     </div>
     )
   }
