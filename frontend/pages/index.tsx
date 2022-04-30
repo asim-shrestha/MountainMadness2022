@@ -4,6 +4,8 @@ import VideoMetadata from "../interface/VideoMetadata";
 import VideoComponent from "../components/VideoComponent";
 import NavBar from "../components/Nav/NavBar";
 import CommentThread from "../components/Comments/CommentThread";
+import React from "react";
+import RecommendedTags from "../components/RecommendedTags";
 import Previews from "../components/Previews/Previews";
 
 const CenteredContainer = styled.div`
@@ -12,7 +14,7 @@ const CenteredContainer = styled.div`
   height: 100vh;
   width: 100vw;
   max-width: 1200px;
-  padding: 3em 1.5em 1.5em 1.5em;
+  padding: 4em 1.5em 1.5em 1.5em;
   margin: auto;
 `;
 
