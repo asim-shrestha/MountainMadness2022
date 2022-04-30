@@ -19,6 +19,7 @@ Built using blood, sweat, and memes, YouTube(tm) is your on stop shop for all tu
 Built on [Next.js](https://nextjs.org/) (a React framework) and the YouTube API.
 
 ### Notable features
+
 - Embedded video playback!
 - Real comment fetching!
 - A killer search functionality!
@@ -28,8 +29,8 @@ Built on [Next.js](https://nextjs.org/) (a React framework) and the YouTube API.
 
 ---
 
-You can run it in 3 very easy steps:
+You can run it in 3 very, very easy steps:
 
 1.  clone the repo
 2.  cd into the repo /frontend
-3.  npm install & npm run dev
+3.  npm install & npm run build & npm start
