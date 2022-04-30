@@ -1,4 +1,6 @@
 import axios from "axios";
+import React from "react";
+import RecommendedTags from "../RecommendedTags";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 
@@ -67,7 +69,8 @@ const Previews = () => {
   }, []);
 
   return (
-    <div class="col-12 col-md-4">
+    <div>
+      <RecommendedTags />
       <div class="list-group">
         {allPreviews.map((data, index) => (
           <PreviewLink href="#">

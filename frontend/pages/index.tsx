@@ -4,9 +4,10 @@ import VideoMetadata from "../interface/VideoMetadata";
 import VideoComponent from "../components/VideoComponent";
 import NavBar from "../components/Nav/NavBar";
 import CommentThread from "../components/Comments/CommentThread";
-import React from "react";
+import React, { useState } from "react";
 import RecommendedTags from "../components/RecommendedTags";
 import Previews from "../components/Previews/Previews";
+import SideNav from "../components/SideNav";
 
 const CenteredContainer = styled.div`
   display: grid;
@@ -36,9 +37,12 @@ const demoVideo: VideoMetadata = {
 };
 
 const Home: NextPage = () => {
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+
   return (
     <>
-      <NavBar />
+      <NavBar openSideNav={() => setIsSideNavOpen(true)}/>
+      <SideNav isOpen={isSideNavOpen} close={() => setIsSideNavOpen(false)}/>
       <CenteredContainer>
         <div className="row">
           <div className="col-12 col-md-8">
